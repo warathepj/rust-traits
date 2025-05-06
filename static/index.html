@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Static File Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .example-box {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .output {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rust Traits Example</h1>
+    <p>This HTML file is being served by a Rust application using tiny_http.</p>
+    
+    <div class="example-box">
+        <h2>Traits in Rust</h2>
+        <p>Traits are Rust's way of defining shared behavior across different types. Below is an example of the Summary trait implemented for NewsArticle and Tweet types:</p>
+        
+        <h3>Code Output:</h3>
+        <div class="output" id="output">Loading...</div>
+    </div>
+    
+    <script>
+        // This would typically fetch data from a Rust backend API
+        // For now, we'll simulate the output of the Rust traits example
+        document.addEventListener('DOMContentLoaded', function() {
+            const article = {
+                headline: "Rust Traits Explained",
+                author: "AI Assistant",
+                content: "Traits are Rust's way of defining shared behavior..."
+            };
+            
+            const tweet = {
+                username: "rustacean",
+                content: "Loving Rust traits! #rustlang",
+                retweets: 15
+            };
+            
+            const articleSummary = `Article: '${article.headline}' by ${article.author} - Preview: ${article.content.substring(0, 20)}...`;
+            const tweetSummary = `Tweet by @${tweet.username}: ${tweet.content} (${tweet.retweets} retweets)`;
+            
+            const output = `Direct call article: ${articleSummary}
+Direct call tweet: ${tweetSummary}
+
+---
+
+Summary: ${articleSummary}
+Summary: ${tweetSummary}`;
+            
+            document.getElementById('output').textContent = output;
+        });
+    </script>
+</body>
+</html>
