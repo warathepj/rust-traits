@@ -11,10 +11,6 @@ A simple web application demonstrating Rust traits through a practical example. 
 - Demonstrates Rust's trait system in a practical context
 - Simple HTTP server for serving static content
 
-////////////
-
-TODO:
-
 ## Installation
 
 ```bash
