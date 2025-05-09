@@ -25,6 +25,47 @@
             font-family: monospace;
             white-space: pre-line;
         }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -35,38 +76,87 @@
         <h2>Traits in Rust</h2>
         <p>Traits are Rust's way of defining shared behavior across different types. Below is an example of the Summary trait implemented for NewsArticle and Tweet types:</p>
         
+        <div class="form-container">
+            <h3>Create a News Article</h3>
+            <form id="articleForm">
+                <div class="form-group">
+                    <label for="headline">Headline:</label>
+                    <input type="text" id="headline" name="headline" value="Rust Traits Explained" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" value="AI Assistant" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content:</label>
+                    <textarea id="content" name="content" required>Traits are Rust's way of defining shared behavior...</textarea>
+                </div>
+                <button type="submit">Generate Summary</button>
+            </form>
+            
+            <h3>Create a Tweet</h3>
+            <form id="tweetForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="rustacean" required>
+                </div>
+                <div class="form-group">
+                    <label for="tweetContent">Content:</label>
+                    <input type="text" id="tweetContent" name="tweetContent" value="Loving Rust traits! #rustlang" required>
+                </div>
+                <div class="form-group">
+                    <label for="retweets">Retweets:</label>
+                    <input type="number" id="retweets" name="retweets" value="15" required>
+                </div>
+                <button type="submit">Generate Summary</button>
+            </form>
+        </div>
+
         <h3>Code Output:</h3>
-        <div class="output" id="output">Loading...</div>
+        <div class="output" id="output">Submit a form to see the output</div>
     </div>
     
     <script>
-        // This would typically fetch data from a Rust backend API
-        // For now, we'll simulate the output of the Rust traits example
         document.addEventListener('DOMContentLoaded', function() {
-            const article = {
-                headline: "Rust Traits Explained",
-                author: "AI Assistant",
-                content: "Traits are Rust's way of defining shared behavior..."
-            };
+            // Handle article form submission
+            document.getElementById('articleForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                updateOutput();
+            });
             
-            const tweet = {
-                username: "rustacean",
-                content: "Loving Rust traits! #rustlang",
-                retweets: 15
-            };
+            // Handle tweet form submission
+            document.getElementById('tweetForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                updateOutput();
+            });
             
-            const articleSummary = `Article: '${article.headline}' by ${article.author} - Preview: ${article.content.substring(0, 20)}...`;
-            const tweetSummary = `Tweet by @${tweet.username}: ${tweet.content} (${tweet.retweets} retweets)`;
-            
-            const output = `Direct call article: ${articleSummary}
+            // Function to update the output based on form values
+            function updateOutput() {
+                const article = {
+                    headline: document.getElementById('headline').value,
+                    author: document.getElementById('author').value,
+                    content: document.getElementById('content').value
+                };
+                
+                const tweet = {
+                    username: document.getElementById('username').value,
+                    content: document.getElementById('tweetContent').value,
+                    retweets: document.getElementById('retweets').value
+                };
+                
+                const articleSummary = `Article: '${article.headline}' by ${article.author} - Preview: ${article.content.substring(0, 20)}...`;
+                const tweetSummary = `Tweet by @${tweet.username}: ${tweet.content} (${tweet.retweets} retweets)`;
+                
+                const output = `Direct call article: ${articleSummary}
 Direct call tweet: ${tweetSummary}
 
 ---
 
 Summary: ${articleSummary}
 Summary: ${tweetSummary}`;
-            
-            document.getElementById('output').textContent = output;
+                
+                document.getElementById('output').textContent = output;
+            }
         });
     </script>
 </body>

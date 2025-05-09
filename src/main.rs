@@ -26,6 +26,8 @@ impl Summary for NewsArticle {
     }
 }
 
+
+/////////////
 // 4. Define another struct 'Tweet'
 struct Tweet {
     username: String,
@@ -42,8 +44,8 @@ impl Summary for Tweet {
 }
 // 6. A function that accepts any type that implements the 
 // 'Summary' trait
-// The `<T: Summary>` part is a "trait bound", meaning T can 
-// be any type
+// The `<T: Summary>` part is a "trait bound", meaning T 
+// can be any type
 // as long as it implements 'Summary'.
 fn print_summary<T: Summary>(item: &T) {
     println!("Summary: {}", item.summarize());
@@ -70,13 +72,15 @@ fn main() {
         retweets: 15,
     };
 
+
     // Print the trait examples to the console
     println!("Direct call article: {}", article.summarize());
     println!("Direct call tweet: {}", tweet.summarize());
     println!("---");
 
     // Or we can use our generic function `print_summary`
-    // It works because both NewsArticle and Tweet implement the Summary trait.
+    // It works because both NewsArticle and Tweet implement 
+    // the Summary trait.
     print_summary(&article);
     print_summary(&tweet);
     
